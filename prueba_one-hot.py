@@ -7,6 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
 
 
+
 df = pd.read_csv('vector_feature.csv')
 
 def preparar_datos():
@@ -40,6 +41,37 @@ def entrenar_modeloRegresion(X_train, X_test, y_train, y_test):
     print('-------------------------------')
     print(classification_report(y_test, y_pred, target_names=['No válido', 'Válido'] ))
 
+    plt.figure(figsize=(10, 5))
+    sns.countplot(x=y_pred)
+    plt.title("Modelo Regresión Logística")
+    plt.xlabel("0: No válido | 1: válido")
+    plt.ylabel("No. de palabras")
+    plt.tight_layout()
+    plt.show()
+
+ # class_weight='balanced' -> Otra predicición considerando este parametro 
+def entrenar_modeloRegresionBalanced(X_train, X_test, y_train, y_test):
+    md_rl_bal = LogisticRegression(max_iter=1000, random_state=45, class_weight='balanced')
+    md_rl_bal.fit(X_train, y_train)
+    y_pred_bal = md_rl_bal.predict(X_test)
+
+    print('-------------------------------')
+    print(f"Score (balanced): {md_rl_bal.score(X_test, y_test):.4f}")
+    print('-------------------------------')
+    print('Matriz de confusión (balanced):')
+    print(confusion_matrix(y_test, y_pred_bal))
+    print('-------------------------------')
+    print('Reporte de clasificación (balanced):')
+    print(classification_report(y_test, y_pred_bal, target_names=['No válido', 'Válido']))
+
+    plt.figure(figsize=(9, 4))
+    sns.countplot(x=y_pred_bal)
+    plt.title("Modelo Regresión Logística(con class_weight)")
+    plt.xlabel("0: No válido | 1: válido")
+    plt.ylabel("No. de palabras")
+    plt.tight_layout()
+    plt.show()
+
 def entrenar_modeloArbolDesicion():
     ...
 
@@ -52,4 +84,5 @@ X = df_preparado.drop(columns=['frase', 'label'])
 y = df_preparado['label']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=39, stratify=y)
 
-entrenar_modeloRegresion(X_train, X_test, y_train, y_test)
+#entrenar_modeloRegresion(X_train, X_test, y_train, y_test)
+entrenar_modeloRegresionBalanced(X_train, X_test, y_train, y_test)
