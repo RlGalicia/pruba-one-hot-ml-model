@@ -6,8 +6,6 @@ import seaborn as sns
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
 
-
-
 df = pd.read_csv('vector_feature.csv')
 
 def preparar_datos():
@@ -19,8 +17,11 @@ def preparar_datos():
     print("----------------------------------------------------")
     print(f"Componente sufijo identificados: {df['sufijo'].unique()}")
     print("----------------------------------------------------")
+    print(f"Personas verbales identificadas: {df['persona'].unique()}")
+    print("----------------------------------------------------")
 
-    columnas_categoricas = ['prefijo', 'raiz', 'sufijo']
+    #incluyendo ahora la categoria persona.
+    columnas_categoricas = ['prefijo', 'raiz', 'sufijo', 'persona']
     ohe = OneHotEncoder(handle_unknown='ignore', sparse_output=False).set_output(transform='pandas')
     ohetransform= ohe.fit_transform(df[columnas_categoricas])
 
@@ -30,6 +31,7 @@ def preparar_datos():
     return df_final
 
 def entrenar_modeloRegresion(X_train, X_test, y_train, y_test):
+
     md_rl = LogisticRegression(max_iter=1000, random_state=45)
     md_rl.fit(X_train, y_train)
     y_pred = md_rl.predict(X_test)
@@ -51,6 +53,7 @@ def entrenar_modeloRegresion(X_train, X_test, y_train, y_test):
 
  # class_weight='balanced' -> Otra predicición considerando este parametro 
 def entrenar_modeloRegresionBalanced(X_train, X_test, y_train, y_test):
+
     md_rl_bal = LogisticRegression(max_iter=1000, random_state=45, class_weight='balanced')
     md_rl_bal.fit(X_train, y_train)
     y_pred_bal = md_rl_bal.predict(X_test)

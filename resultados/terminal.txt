@@ -122,3 +122,132 @@ weighted avg       0.76      0.74      0.74       209
 
 
 (venv) E:\mis_docs\Ingenieria\8 semestre\ml\one-hot>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Resultados de la regresión logística con la columna de personas grámaticales
+
+(venv) E:\mis_docs\Ingenieria\8 semestre\ml\one-hot>python prueba_one-hot.py
+            frase  label prefijo   raiz sufijo  apostrofe   persona
+0       naa guuta      1     naa  guuta   ZERO          0       1sg
+1    lii guuta'lu      1     lii  guuta     lu          1       2sg
+2  laabe guuta'be      1   laabe  guuta     be          1       3sg
+3  laanu guuta'nu      1   laanu  guuta     nu          1  1pl_incl
+4  laadu guuta'du      1   laadu  guuta     du          1   1pl_exc
+----------------------------------------------------
+Prefijos identficaos:  <StringArray>
+['naa', 'lii', 'laabe', 'laanu', 'laadu', 'laatu']
+Length: 6, dtype: str
+----------------------------------------------------
+Verbos raíz: <StringArray>
+[       'guuta',     'gunaxhia',     'gunaxhii',      'biziide',
+      'biziidi',        'guuze',       'biinda',        'guziá',
+         'guzi',      'binebiá',      'binibiá',      'binibia',
+       'bixoñe',       'bigaya',         'biga',        'bidiá',
+         'bidi',        'gudxe',        'gudxi',       'bisana',
+         'guse',         'gusi',        'guliá',         'guli',
+      'bizuloá',       'bizulo',       'bizuló',     'bidxeela',
+      'bidxela', 'guca huaraya',   'guca huara',      'bisiide',
+      'bissidi',         'bioá',         'bioa',      'bisenda',
+        'bicáa',        'bicaa',        'biina',      'guleeza',
+        'guniá',         'guni',         'bine',         'bini',
+         'guyá',         'guye',      'gudxite',        'binda',
+      'bisiaya',        'bisia',     'yendaaya',       'yendaa',
+       'yendao',        'yeneá',         'yene',         'yune',
+      'bisaaya',        'bisaa',     'biyadxiá',      'biyadxi',
+       'bixoba',     'bisianda',      'bisugaa',      'gudiide',
+      'gudiidi',       'gunaba',         'bicá',         'bica',
+    'guni ique',  'biui diidxa',       'gudxhe',       'bitiñe',
+       'bitine',        'gunna',        'bireá',         'bire',
+      'gudxiba',         'gupa',         'hueá',          'hue',
+  'bine dxiiña',  'bini dxiiña',      'bedaneá',      'bendane',
+      'biquiñe',      'biquine',          'biá',       'bidúya',
+      'yeganna',       'guleza',     'ubigueta',         'guca',
+        'guriá',         'guri',          'bia']
+Length: 95, dtype: str
+----------------------------------------------------
+Componente sufijo identificados: <StringArray>
+['ZERO', 'lu', 'be', 'nu', 'du', 'tu']
+Length: 6, dtype: str
+----------------------------------------------------
+Personas verbales identificadas: <StringArray>
+['1sg', '2sg', '3sg', '1pl_incl', '1pl_exc', '2pl']
+Length: 6, dtype: str
+----------------------------------------------------
+-------------------------------
+Score: 0.6411483253588517
+-------------------------------
+[[ 18  52]
+ [ 23 116]]
+-------------------------------
+              precision    recall  f1-score   support
+
+   No válido       0.44      0.26      0.32        70
+      Válido       0.69      0.83      0.76       139
+
+    accuracy                           0.64       209
+   macro avg       0.56      0.55      0.54       209
+weighted avg       0.61      0.64      0.61       209
+
+(venv) E:\mis_docs\Ingenieria\8 semestre\ml\one-hot>python prueba_one-hot.py
+            frase  label prefijo   raiz sufijo  apostrofe   persona
+0       naa guuta      1     naa  guuta   ZERO          0       1sg
+1    lii guuta'lu      1     lii  guuta     lu          1       2sg
+2  laabe guuta'be      1   laabe  guuta     be          1       3sg
+3  laanu guuta'nu      1   laanu  guuta     nu          1  1pl_incl
+4  laadu guuta'du      1   laadu  guuta     du          1   1pl_exc
+----------------------------------------------------
+Prefijos identficaos:  <StringArray>
+['naa', 'lii', 'laabe', 'laanu', 'laadu', 'laatu']
+Length: 6, dtype: str
+----------------------------------------------------
+Verbos raíz: <StringArray>
+[       'guuta',     'gunaxhia',     'gunaxhii',      'biziide',
+      'biziidi',        'guuze',       'biinda',        'guziá',
+         'guzi',      'binebiá',      'binibiá',      'binibia',
+       'bixoñe',       'bigaya',         'biga',        'bidiá',
+         'bidi',        'gudxe',        'gudxi',       'bisana',
+         'guse',         'gusi',        'guliá',         'guli',
+      'bizuloá',       'bizulo',       'bizuló',     'bidxeela',
+      'bidxela', 'guca huaraya',   'guca huara',      'bisiide',
+      'bissidi',         'bioá',         'bioa',      'bisenda',
+        'bicáa',        'bicaa',        'biina',      'guleeza',
+        'guniá',         'guni',         'bine',         'bini',
+         'guyá',         'guye',      'gudxite',        'binda',
+      'bisiaya',        'bisia',     'yendaaya',       'yendaa',
+       'yendao',        'yeneá',         'yene',         'yune',
+      'bisaaya',        'bisaa',     'biyadxiá',      'biyadxi',
+       'bixoba',     'bisianda',      'bisugaa',      'gudiide',
+      'gudiidi',       'gunaba',         'bicá',         'bica',
+    'guni ique',  'biui diidxa',       'gudxhe',       'bitiñe',
+       'bitine',        'gunna',        'bireá',         'bire',
+      'gudxiba',         'gupa',         'hueá',          'hue',
+  'bine dxiiña',  'bini dxiiña',      'bedaneá',      'bendane',
+      'biquiñe',      'biquine',          'biá',       'bidúya',
+      'yeganna',       'guleza',     'ubigueta',         'guca',
+        'guriá',         'guri',          'bia']
+Length: 95, dtype: str
+----------------------------------------------------
+Componente sufijo identificados: <StringArray>
+['ZERO', 'lu', 'be', 'nu', 'du', 'tu']
+Length: 6, dtype: str
+----------------------------------------------------
+Personas verbales identificadas: <StringArray>
+['1sg', '2sg', '3sg', '1pl_incl', '1pl_exc', '2pl']
+Length: 6, dtype: str
+----------------------------------------------------
+-------------------------------
+Score (balanced): 0.7321
+-------------------------------
+Matriz de confusión (balanced):
+[[ 51  19]
+ [ 37 102]]
+-------------------------------
+Reporte de clasificación (balanced):
+              precision    recall  f1-score   support
+
+   No válido       0.58      0.73      0.65        70
+      Válido       0.84      0.73      0.78       139
+
+    accuracy                           0.73       209
+   macro avg       0.71      0.73      0.72       209
+weighted avg       0.75      0.73      0.74       209
