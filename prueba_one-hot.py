@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 
 df = pd.read_csv('vector_feature.csv')
 
@@ -75,8 +76,41 @@ def entrenar_modeloRegresionBalanced(X_train, X_test, y_train, y_test):
     plt.tight_layout()
     plt.show()
 
-def entrenar_modeloArbolDesicion():
-    ...
+def entrenar_modeloArbolDesicion(X_train, X_test, y_train, y_test):
+    
+    md_ad = DecisionTreeClassifier(random_state=45, class_weight='balanced')
+    md_ad.fit(X_train, y_train)
+    y_pred= md_ad.predict(X_test)
+
+    print('-------------------------------')
+    print(f"Score árbol de decisión: {md_ad.score(X_test, y_test):.4f}")
+    print('-------------------------------')
+    print('Matriz de confusión:')
+    print(confusion_matrix(y_test, y_pred))
+    print('-------------------------------')
+    print('Reporte de clasificación:')
+    print(classification_report(y_test, y_pred, target_names=['No válido', 'Válido']))
+
+    plt.figure(figsize=(9, 4))
+    sns.countplot(x=y_pred)
+    plt.title("Modelo Árbol de Decisión")
+    plt.xlabel("0: No válido | 1: válido")
+    plt.ylabel("No. de palabras")
+    plt.tight_layout()
+    plt.show()
+
+    plt.figure(figsize=(20, 10))
+    plot_tree(md_ad, feature_names=X_train.columns.tolist(), class_names=['No Válido', 'Válido'], filled=True, rounded=True)
+    plt.title("Estructura del Árbol de Decisión")
+    plt.tight_layout()
+    plt.show()
+
+    #Gráfica con los primeros tres niveles
+    plt.figure(figsize=(20, 10))
+    plot_tree(md_ad, max_depth=3, feature_names=X_train.columns.tolist(), class_names=['No Válido', 'Válido'], filled=True, rounded=True)
+    plt.title("Estructura del Árbol de Decisión (3 niveles)")
+    plt.tight_layout()
+    plt.show()
 
 def entrenar_modeloArbolRndom():
     ...
@@ -88,4 +122,5 @@ y = df_preparado['label']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=39, stratify=y)
 
 #entrenar_modeloRegresion(X_train, X_test, y_train, y_test)
-entrenar_modeloRegresionBalanced(X_train, X_test, y_train, y_test)
+#entrenar_modeloRegresionBalanced(X_train, X_test, y_train, y_test)
+entrenar_modeloArbolDesicion(X_train, X_test, y_train, y_test)
