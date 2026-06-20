@@ -25,6 +25,14 @@ error_concordancia	| 0	| 1
 
 *Considerando el caso la 1ps 'naa'
 
+## Archivos csv generados
+1. **registro_entrenamiento_train.csv**: Almacena las frases con su índice y label que fue separa aleatoriamente para entrenar los diferentes modelos.
+2.  **registro_pruebas+test.csv**: Almancena el sonjunto de frases reservado para probar y evaluar los diferentes modelos.
+3. Resultados generados por los diferentes modelos, mostrando la `frase`, el `label real` contrastado con la `prediccion` y un `boolean` que indica si la clasificación fue correcta.
+* predicciones_Regresion_Logistica.csv
+* predicciones_Regresion_Logistica.csv
+* predicciones_Árboles_aleatorios.csv
+  
 ## Instalación
 
 ### Entorno virtual (venv)
